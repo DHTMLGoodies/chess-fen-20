@@ -1,0 +1,68 @@
+<?
+@include($_SERVER['DOCUMENT_ROOT']."/config/log_visitors.inc");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <title>Chess Fen Viewer - demo 2</title>
+    <?
+	$keywords = "Chess FEN viewer,Chess viewer,Chess widget,Forsyth-Edwards Notation";
+	@include($_SERVER['DOCUMENT_ROOT']."/config/metatags.inc");
+	?>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/chess-fen20.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/ChessFen20.js"></script>
+    <script type="text/javascript" src="js/ChessFenAutoload.js"></script>
+    <style type="text/css">
+        /** Demo css */
+        body, html {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .centered-container {
+            margin: 0 auto;
+            text-align: left;
+            width: 600px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="centered-container">
+    <p>A chess position is automatically inserted below</p>
+
+    <div class="chess-fen-container" style="width:300px;margin:5px"
+         data-fen="r1bq4/1p4kp/3p1n2/5pB1/p1pQ4/8/1P4PP/4RRK1 w - - 0 1"></div>
+    <p>And also below this paragraph:</p>
+
+    <p>
+
+    <div class="chess-fen-container" style="width:250px;float:left;margin:5px"
+         data-fen="r1bq4/1p4kp/3p1n2/5pB1/p1pQ4/8/1P4PP/4RRK1 w - - 0 1" data-labels="0"></div>
+    Content flowing
+    around the chess board.
+
+    </p>
+    <div style="clear:both"></div>
+    <h1>Manually created board</h1>
+
+    <div id="board-container" style="width:500px">
+
+    </div>
+
+    <script type="text/javascript">
+        var fenObj = new DG.ChessFen20({
+            autoFlip: true,
+            renderTo: "#board-container",
+            fen: "1rr3k1/p3ppbp/3pbnp1/7P/qP1BP1P1/5P2/1PPQ4/1NKR1B1R b - - 0 1"
+        });
+        // A manually created board can later be updated with a new position using
+        // fenObj.showFen(<position>);
+    </script>
+</div>
+
+
+</body>
